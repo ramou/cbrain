@@ -2280,13 +2280,13 @@ chmod o+x . .. ../.. ../../..
 # 1) we mount the gridshare root directory
 # 2) we mount the local data provider cache root directory
 # 3) we mount each (if any) of the root directory for local data providers
-# 4) with -H we mount the task's work directory as the $HOME directory
+# 4) with --pwd we mount the task's work directory as the $HOME directory
 #{singularity_executable_name}                  \\
     exec                                        \\
     -B #{gridshare_dir.bash_escape}             \\
     -B #{cache_dir.bash_escape}                 \\
     #{esc_local_dp_mountpoints}                 \\
-    -H #{task_workdir.bash_escape}              \\
+    --pwd #{task_workdir.bash_escape}              \\
     #{container_image_name.bash_escape}         \\
     ./#{singularity_wrapper_basename.bash_escape}
 
